@@ -1,4 +1,4 @@
-package com.example.wisata_candi_celline
+package com.example.WisataCandi-SilviCaroline
 
 import io.flutter.embedding.android.FlutterActivity
 
