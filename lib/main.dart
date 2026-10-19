@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wisata_candi_celline/screens/detail_screen.dart';
-import 'package:wisata_candi_celline/data/candi_data.dart';
+import 'package:WisataCandi-SilviCaroline/screens/detail_screen.dart';
+import 'package:WisataCandi-SilviCaroline/data/candi_data.dart';
 
 void main() {
   runApp(const MyApp());
