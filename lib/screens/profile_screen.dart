@@ -18,62 +18,62 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // TODO: 2. Buat ProfileHeader (foto profil)
-            Stack(
-              children: [
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  color: Colors.deepPurple,
-                ),
+            SizedBox(
+              height: 250,
+              child: Stack(
+                children: [
+                  Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.deepPurple,
+                  ),
 
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 200 - 50,
-                    ),
-                    child: Stack(
-                      alignment: Alignment.bottomRight,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.deepPurple,
-                              width: 2,
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 200 - 50,
+                      ),
+                      child: Stack(
+                        alignment: Alignment.bottomRight,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.deepPurple,
+                                width: 2,
+                              ),
+                              shape: BoxShape.circle,
                             ),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const CircleAvatar(
-                            radius: 50,
-                            backgroundImage: AssetImage(
-                              'images/placeholder_image.png',
+                            child: const CircleAvatar(
+                              radius: 50,
+                              backgroundImage: AssetImage(
+                                'images/placeholder_image.png',
+                              ),
                             ),
                           ),
-                        ),
 
-                        if (isSignedIn)
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.camera_alt,
-                              color: Colors.deepPurple[50],
+                          if (isSignedIn)
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.camera_alt,
+                                color: Colors.deepPurple[50],
+                              ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 12),
 
             // TODO: 3. Buat ProfileInfo (info pengguna)
             Padding(
@@ -82,6 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               child: Column(
                 children: [
+                  // Informasi Pengguna
                   Row(
                     children: [
                       SizedBox(
@@ -116,19 +117,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
 
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 4),
 
+                  // Informasi Nama
                   Row(
                     children: [
                       SizedBox(
                         width:
                             MediaQuery.of(context).size.width / 3,
-                        child: const Text(
-                          'Nama Lengkap',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: Colors.blue,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Nama',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
 
@@ -146,9 +157,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
 
+                  const SizedBox(height: 4),
+
+                  // Informasi Favorit
+                  Row(
+                    children: [
+                      SizedBox(
+                        width:
+                            MediaQuery.of(context).size.width / 3,
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Favorit',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                        child: Text(
+                          ': $favoriteCandiCount',
+                          style: const TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
                   // TODO: 4. Buat ProfileActions
                   // (tombol sign in/out)
-
                   const SizedBox(height: 4),
 
                   Divider(
@@ -180,7 +227,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       isSignedIn = !isSignedIn;
     });
-  } 
+  }
 
   // TODO: 6. Implementasi fungsi signOut
   void signOut() {
