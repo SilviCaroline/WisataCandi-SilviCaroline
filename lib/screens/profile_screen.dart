@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
+import '../widgets/profile_info_item.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -21,7 +22,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // TODO: 2. Buat ProfileHeader (foto profil)
+            // ======================================
+            // TODO: 2. ProfileHeader (foto profil)
+            // ======================================
+
             SizedBox(
               height: 250,
               child: Stack(
@@ -75,7 +79,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             const SizedBox(height: 12),
 
-            // TODO: 3. Buat ProfileInfo (info pengguna)
+            // ======================================
+            // TODO: 3. ProfileInfo
+            // REFACTORING MENGGUNAKAN ProfileInfoItem
+            // ======================================
+
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -83,119 +91,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   // Informasi Pengguna
-                  Row(
-                    children: [
-                      SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width / 3,
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.lock,
-                              color: Colors.amber,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Pengguna',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Expanded(
-                        child: Text(
-                          ': $userName',
-                          style: const TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ],
+                  ProfileInfoItem(
+                    icon: Icons.lock,
+                    label: 'Pengguna',
+                    value: userName,
+                    iconColor: Colors.amber,
                   ),
 
                   const SizedBox(height: 4),
 
                   // Informasi Nama
-                  Row(
-                    children: [
-                      SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width / 3,
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.person,
-                              color: Colors.blue,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Nama',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Expanded(
-                        child: Text(
-                          ': $fullName',
-                          style: const TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-
-                      if (isSignedIn)
-                        const Icon(Icons.edit),
-                    ],
+                  ProfileInfoItem(
+                    icon: Icons.person,
+                    label: 'Nama',
+                    value: fullName,
+                    showEditIcon: isSignedIn,
+                    onEditPressed: () =>
+                        debugPrint('Icon edit ditekan'),
+                    iconColor: Colors.blue,
                   ),
 
                   const SizedBox(height: 4),
 
                   // Informasi Favorit
-                  Row(
-                    children: [
-                      SizedBox(
-                        width:
-                            MediaQuery.of(context).size.width / 3,
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Favorit',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Expanded(
-                        child: Text(
-                          ': $favoriteCandiCount',
-                          style: const TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ],
+                  ProfileInfoItem(
+                    icon: Icons.favorite,
+                    label: 'Favorit',
+                    value: favoriteCandiCount > 0
+                        ? '$favoriteCandiCount'
+                        : '',
+                    iconColor: Colors.red,
                   ),
 
-                  // TODO: 4. Buat ProfileActions
-                  // (tombol sign in/out)
+                  // ==================================
+                  // TODO: 4. ProfileActions
+                  // Tombol Sign In dan Sign Out
+                  // ==================================
+
                   const SizedBox(height: 4),
 
                   Divider(
@@ -222,14 +154,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  // ======================================
   // TODO: 5. Implementasi fungsi signIn
+  // ======================================
+
   void signIn() {
     setState(() {
       isSignedIn = !isSignedIn;
     });
   }
 
+  // ======================================
   // TODO: 6. Implementasi fungsi signOut
+  // ======================================
+
   void signOut() {
     setState(() {
       isSignedIn = !isSignedIn;
