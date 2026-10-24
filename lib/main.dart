@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:WisataCandi-SilviCaroline/screens/detail_screen.dart';
-import 'package:WisataCandi-SilviCaroline/data/candi_data.dart';
+import 'screens/profile_screen.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -15,12 +16,14 @@ class MyApp extends StatelessWidget {
       title: 'Wisata Candi',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
         useMaterial3: true,
       ),
-      home: DetailScreen(candi: candiList[0]),
+
+      // home: DetailScreen(candi: candiList[0]),
+      home: const ProfileScreen(),
     );
   }
 }
-
-

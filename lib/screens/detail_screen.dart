@@ -1,10 +1,15 @@
+
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:wisata_candi_celline/models/candi.dart';
+import '../models/candi.dart';
 
 class DetailScreen extends StatelessWidget {
   final Candi candi;
-  const DetailScreen({super.key, required this.candi});
+
+  const DetailScreen({
+    super.key,
+    required this.candi,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +17,16 @@ class DetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // DetailHeader: Gunakan Stack agar tombol menumpuk di atas gambar
+
+            // ======================================
+            // DETAIL HEADER
+            // ======================================
+
+            // Gunakan Stack agar tombol menumpuk
+            // di atas gambar
             Stack(
               children: [
+
                 // Anak Pertama: Gambar Utama
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -31,7 +43,9 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Anak Kedua: Tombol Back Kustom (Melayang di kiri atas gambar)
+
+                // Anak Kedua: Tombol Back Kustom
+                // Melayang di kiri atas gambar
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -39,143 +53,246 @@ class DetailScreen extends StatelessWidget {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.deepPurple[100]?.withValues(alpha: 0.8),
+                      color: Colors.deepPurple[100]?.withValues(
+                        alpha: 0.8,
+                      ),
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: const Icon(Icons.arrow_back),
+                      icon: const Icon(
+                        Icons.arrow_back,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
 
-            // DetailInfo
+            // ======================================
+            // DETAIL INFO
+            // ======================================
+
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   const SizedBox(height: 16),
+
+                  // Nama Candi dan Tombol Favorit
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        candi.name,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Text(
+                          candi.name,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
+
                       IconButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.favorite_border),
+                        icon: const Icon(
+                          Icons.favorite_border,
+                        ),
                       ),
                     ],
                   ),
+
                   const SizedBox(height: 16),
+
+                  // Informasi Lokasi
                   Row(
                     children: [
-                      const Icon(Icons.place, color: Colors.red),
+                      const Icon(
+                        Icons.place,
+                        color: Colors.red,
+                      ),
+
                       const SizedBox(width: 8),
+
                       const SizedBox(
                         width: 70,
                         child: Text(
                           'Lokasi',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      Text(': ${candi.location}'),
+
+                      Expanded(
+                        child: Text(
+                          ': ${candi.location}',
+                        ),
+                      ),
                     ],
                   ),
+
+                  // Informasi Tahun Dibangun
                   Row(
                     children: [
-                      const Icon(Icons.calendar_month, color: Colors.blue),
+                      const Icon(
+                        Icons.calendar_month,
+                        color: Colors.blue,
+                      ),
+
                       const SizedBox(width: 8),
+
                       const SizedBox(
                         width: 70,
                         child: Text(
                           'Dibangun',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      Text(': ${candi.built}'),
+
+                      Expanded(
+                        child: Text(
+                          ': ${candi.built}',
+                        ),
+                      ),
                     ],
                   ),
+
+                  // Informasi Tipe Candi
                   Row(
                     children: [
-                      const Icon(Icons.house, color: Colors.green),
+                      const Icon(
+                        Icons.house,
+                        color: Colors.green,
+                      ),
+
                       const SizedBox(width: 8),
+
                       const SizedBox(
                         width: 70,
                         child: Text(
                           'Tipe',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      Text(': ${candi.type}'),
+
+                      Expanded(
+                        child: Text(
+                          ': ${candi.type}',
+                        ),
+                      ),
                     ],
                   ),
+
                   const SizedBox(height: 16),
-                  Divider(color: Colors.deepPurple.shade100),
+
+                  Divider(
+                    color: Colors.deepPurple.shade100,
+                  ),
+
                   const SizedBox(height: 16),
+
+                  // Judul Deskripsi
                   const Text(
                     'Deskripsi',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+
                   const SizedBox(height: 16),
-                  Text(candi.description),
+
+                  // Isi Deskripsi
+                  Text(
+                    candi.description,
+                  ),
                 ],
               ),
             ),
 
-            // DetailGallery
+            // ======================================
+            // DETAIL GALLERY
+            // ======================================
+
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Divider(color: Colors.deepPurple.shade100),
+
+                  Divider(
+                    color: Colors.deepPurple.shade100,
+                  ),
+
                   const Text(
                     'Galeri',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+
                   const SizedBox(height: 10),
+
+                  // Menampilkan daftar gambar
                   SizedBox(
                     height: 100,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: candi.imageUrls.length,
+
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.only(right: 8),
+                          padding: const EdgeInsets.only(
+                            right: 8,
+                          ),
                           child: GestureDetector(
                             onTap: () {},
+
                             child: Container(
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius:
+                                    BorderRadius.circular(12),
                                 border: Border.all(
                                   color: Colors.deepPurple.shade100,
                                   width: 2,
                                 ),
                               ),
+
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius:
+                                    BorderRadius.circular(10),
                                 child: CachedNetworkImage(
-                                  imageUrl: candi.imageUrls[index],
+                                  imageUrl:
+                                      candi.imageUrls[index],
                                   width: 120,
                                   height: 120,
                                   fit: BoxFit.cover,
-                                  placeholder: (context, url) => Container(
+
+                                  placeholder: (context, url) =>
+                                      Container(
                                     width: 120,
                                     height: 120,
                                     color: Colors.deepPurple[50],
                                   ),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
+
+                                  errorWidget:
+                                      (context, url, error) =>
+                                          const Icon(
+                                    Icons.error,
+                                  ),
                                 ),
                               ),
                             ),
@@ -184,10 +301,15 @@ class DetailScreen extends StatelessWidget {
                       },
                     ),
                   ),
+
                   const SizedBox(height: 4),
+
                   const Text(
                     'Tap untuk memperbesar',
-                    style: TextStyle(fontSize: 12, color: Colors.black54),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black54,
+                    ),
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
-import 'package:WisataCandi-SilviCaroline/models/candi.dart';
+
+import '../models/candi.dart';
 
 var candiList = [
   Candi(
@@ -17,6 +18,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Mendut',
     location: 'Magelang, Jawa Tengah',
@@ -33,6 +35,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Prambanan',
     location: 'Daerah Istimewa Yogyakarta',
@@ -49,6 +52,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Lumbung',
     location: 'Klaten, Jawa Tengah',
@@ -65,6 +69,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Sewu',
     location: 'Klaten, Jawa Tengah',
@@ -81,6 +86,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Kalasan',
     location: 'Daerah Istimewa Yogyakarta',
@@ -97,6 +103,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Sari',
     location: 'Daerah Istimewa Yogyakarta',
@@ -113,6 +120,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Plaosan',
     location: 'Klaten, Jawa Tengah',
@@ -129,6 +137,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Singosari',
     location: 'Malang, Jawa Timur',
@@ -145,6 +154,7 @@ var candiList = [
     ],
     isFavorite: false,
   ),
+
   Candi(
     name: 'Candi Jago',
     location: 'Malang, Jawa Timur',
